@@ -1,20 +1,19 @@
-int i = 0;
+float i = 0;
 unsigned long CzasOne = 0;
-unsigned long CzasTwo = 0;
 
 void Zero()
 {
-  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
   if ((millis() - CzasOne) <= 1000 ) {
     i++;
   }
   else {
-     Serial.print("czestotliwosc pradu w sieci = ");
-     Serial.print(i/2);
-     Serial.println("Hz");
+     // Serial.print("czestotliwosc pradu w sieci = ");
+     Serial.println(i/2);
+     // Serial.println("Hz");
     CzasOne = millis();
     i = 0;
   }
+  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 }
 
 void setup() {
@@ -23,8 +22,8 @@ void setup() {
   pinMode(2, INPUT);
   attachInterrupt(0, Zero, FALLING);
   CzasOne = millis();
+  Serial.println("start");
 }
 
 void loop() {
-  // Serial.println(i);
 }
